@@ -22,8 +22,10 @@ type Field struct {
 }
 
 type Schema struct {
-	Name   string
-	Fields []*Field
+	Name          string
+	Doc           string
+	CollectionDoc string `yaml:"collection_doc"`
+	Fields        []*Field
 }
 
 func LoadSchema(filename string) (*Schema, error) {
@@ -53,6 +55,9 @@ func Output(w io.Writer, s *Schema, r io.Reader) error {
 	fmt.Fprintf(w, "package openflights\n")
 
 	// type definition
+	if s.Doc != "" {
+		fmt.Fprintf(w, "// %s\n", s.Doc)
+	}
 	fmt.Fprintf(w, "type %s struct {\n", s.Name)
 	for _, f := range s.Fields {
 		if f == nil {
@@ -66,6 +71,9 @@ func Output(w io.Writer, s *Schema, r io.Reader) error {
 	fmt.Fprint(w, "}\n")
 
 	// data array
+	if s.CollectionDoc != "" {
+		fmt.Fprintf(w, "// %s\n", s.CollectionDoc)
+	}
 	fmt.Fprintf(w, "var %ss = []%s{\n", s.Name, s.Name)
 	c := csv.NewReader(r)
 	for {

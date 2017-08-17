@@ -1,4 +1,6 @@
 name: Airport
+doc: Airport represents an airport.
+collection_doc: Airports is a list of all airports in the OpenFlights dataset.
 fields:
   - null # Airport ID
   - name: Name

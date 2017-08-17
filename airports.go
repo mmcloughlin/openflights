@@ -2,6 +2,7 @@
 
 package openflights
 
+// Airport represents an airport.
 type Airport struct {
 	// Airport name.
 	Name string
@@ -21,6 +22,7 @@ type Airport struct {
 	Altitude float64
 }
 
+// Airports is a list of all airports in the OpenFlights dataset.
 var Airports = []Airport{
 	{"Goroka Airport", "Goroka", "Papua New Guinea", "GKA", "AYGA", -6.081689834590001, 145.391998291, 5282},
 	{"Madang Airport", "Madang", "Papua New Guinea", "MAG", "AYMD", -5.20707988739, 145.789001465, 20},
