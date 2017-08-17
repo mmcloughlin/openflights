@@ -1,36 +1,30 @@
 name: Airport
 fields:
-  # Airport ID: Unique OpenFlights identifier for this airport.
-  - null
-  # Airport name.
+  - null # Airport ID
   - name: Name
+    doc: Airport name.
     type: string
-  # City. Main city served by airport.
   - name: City
+    doc: Main city served by airport.
     type: string
-  # Country.
   - name: Country
+    doc: Country or territory where airport is located.
     type: string
-  # IATA	3-letter IATA code. Null if not assigned/unknown.
   - name: IATA
+    doc: 3-letter IATA code. Empty if not assigned/unknown.
     type: string
-  # ICAO	4-letter ICAO code.
   - name: ICAO
+    doc: 4-letter ICAO code.
     type: string
-  # Latitude	Decimal degrees, usually to six significant digits. Negative is South, positive is North.
   - name: Latitude
+    doc: Latitude in decimal degrees.
     type: float64
-  # Longitude	Decimal degrees, usually to six significant digits. Negative is West, positive is East.
   - name: Longitude
+    doc: Longitude in decimal degrees.
     type: float64
-  # Altitude	In feet.
   - name: Altitude
+    doc: Altitude in feet.
     type: float64
-  # Timezone	Hours offset from UTC. Fractional hours are expressed as decimals, eg. India is 5.5.
-  # DST	Daylight savings time. One of E (Europe), A (US/Canada), S (South America), O (Australia), Z (New Zealand), N (None) or U (Unknown). See also: Help: Time
-  # Tz database time zone	Timezone in "tz" (Olson) format, eg. "America/Los_Angeles".
-  - null
-  # Type	Type of the airport. Value "airport" for air terminals, "station" for train stations, "port" for ferry terminals and "unknown" if not known. In airports.csv, only type=airport is included.
-  - null
-  # Source	Source of this data. "OurAirports" for data sourced from OurAirports, "Legacy" for old data not matched to OurAirports (mostly DAFIF), "User" for unverified user contributions. In airports.csv, only source=OurAirports is included.
-  - null
+  - null # Timezone
+  - null # Type
+  - null # Source

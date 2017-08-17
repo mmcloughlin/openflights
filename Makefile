@@ -1,4 +1,4 @@
-all: airports.go
+all: airports.go airports.dat
 
 %.dat:
 	wget https://raw.githubusercontent.com/jpatokal/openflights/master/data/$@

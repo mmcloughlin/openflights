@@ -17,6 +17,7 @@ import (
 
 type Field struct {
 	Name string
+	Doc  string
 	Type string
 }
 
@@ -47,6 +48,8 @@ var formatters = map[string]formatter{
 }
 
 func Output(w io.Writer, s *Schema, r io.Reader) error {
+	fmt.Fprintf(w, "// Generated code. DO NOT EDIT.\n\n")
+
 	fmt.Fprintf(w, "package openflights\n")
 
 	// type definition
@@ -55,10 +58,14 @@ func Output(w io.Writer, s *Schema, r io.Reader) error {
 		if f == nil {
 			continue
 		}
+		if f.Doc != "" {
+			fmt.Fprintf(w, "\t// %s\n", f.Doc)
+		}
 		fmt.Fprintf(w, "\t%s %s\n", f.Name, f.Type)
 	}
 	fmt.Fprint(w, "}\n")
 
+	// data array
 	fmt.Fprintf(w, "var %ss = []%s{\n", s.Name, s.Name)
 	c := csv.NewReader(r)
 	c.LazyQuotes = true
