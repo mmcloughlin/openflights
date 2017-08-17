@@ -68,7 +68,6 @@ func Output(w io.Writer, s *Schema, r io.Reader) error {
 	// data array
 	fmt.Fprintf(w, "var %ss = []%s{\n", s.Name, s.Name)
 	c := csv.NewReader(r)
-	c.LazyQuotes = true
 	for {
 		record, err := c.Read()
 		if err == io.EOF {

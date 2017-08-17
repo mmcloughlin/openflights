@@ -26,5 +26,7 @@ fields:
     doc: Altitude in feet.
     type: float64
   - null # Timezone
+  - null # DST
+  - null # tz (Olsen) format
   - null # Type
   - null # Source
