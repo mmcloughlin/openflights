@@ -1,2 +1,3 @@
 # openflights
-OpenFlights data in Golang format
+
+[OpenFlights airport and airline data](https://openflights.org/data.html) encapsulated in a Golang package.
