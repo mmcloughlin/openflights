@@ -11,6 +11,6 @@ all: airports.go airlines.go
 	gofmt -w $@
 
 clean:
-	$(RM) *.dat
+	$(RM) *.dat *.csv
 
 .PHONY: all clean
