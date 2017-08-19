@@ -6,11 +6,16 @@ all: airports.go airlines.go
 %.csv: %.dat
 	cat $< | sed 's/\\N//g' | sed 's/\\\\//g' | sed 's/\\"/""/g' > $@
 
-%.go: make_datafile.go %.schema.yaml %.csv
-	go run $< -schema $*.schema.yaml -data $*.csv -output $@
+%.go: %.schema.yaml %.csv
+	databundler -pkg openflights -schema $*.schema.yaml -data $*.csv -output $@
 	gofmt -w $@
+
+deps:
+	go get github.com/mmcloughlin/databundler
 
 clean:
 	$(RM) *.dat *.csv
 
-.PHONY: all clean
+.PHONY: all clean deps
+
+.PRECIOUS: %.dat
